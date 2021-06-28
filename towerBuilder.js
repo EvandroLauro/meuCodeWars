@@ -17,24 +17,52 @@ and a tower of 6 floors looks like below
   '***********'
 ]
 */
-function toTowerBuilder(numFloors) {
-    let folhasPorAndar = numFolhasPorAndar(numFloors)
-    console.log(folhasPorAndar)
-
+function torre(tamanhoDaTorre) {
+  let pedrasPorAndar = numPedrasPorAndar(tamanhoDaTorre)
+  let pedrasCriada = criandoPedras(pedrasPorAndar)
+  return posicionandoAsPedras(pedrasCriada, pedrasPorAndar)  
 }
 
-function numFolhasPorAndar(numFloors) {
-    let altura = numFloors
-    let folhas = 1
+function numPedrasPorAndar(tamanhoDaTorre) {
+  let inicio = 0
+  let pedra = 1
+  let listaPedras = []
+  while (inicio < tamanhoDaTorre) {
+    inicio++
+    listaPedras.push(pedra)
+    pedra = pedra + 2
+  }
+  return listaPedras
+}
+
+function criandoPedras(pedrasPorAndar) {
+  let pedrasCriada = []
+  for (let i = 0; i < pedrasPorAndar.length; i++) {
     let inicio = 0
-    let listFolhas = []
-    while (inicio < altura) {
-        inicio++
-        listFolhas.push(folhas)
-        folhas = folhas + 2
+    let pedra = "*"
+    let pedraIncio = ""
+    while (inicio < pedrasPorAndar[i]) {
+      inicio++
+      pedraIncio = pedraIncio + pedra
     }
-    return listFolhas
+    pedrasCriada.push(pedraIncio)
+  }
+  return pedrasCriada
 }
-//toTowerBuilder(3)
-module.exports = {numFolhasPorAndar, toTowerBuilder}
+
+function posicionandoAsPedras(pedrasCriada, pedrasPorAndar) {
+  let primeiroAndar  = pedrasPorAndar[pedrasPorAndar.length -1]
+  let listaPedrasPosicionada = []
+  for (let i = 0; i < pedrasCriada.length; i++) {
+    let espaço = " "
+    let numeroDeEspaço = primeiroAndar - pedrasPorAndar[i]
+    let espaçoDividido = numeroDeEspaço / 2
+    let criaEspaço = espaço.repeat(espaçoDividido)
+    let pedrasPosicionada = criaEspaço + pedrasCriada[i] + criaEspaço
+    listaPedrasPosicionada.push(pedrasPosicionada)
+  }
+  return listaPedrasPosicionada
+}
+
+module.exports = {torre, numPedrasPorAndar, criandoPedras, posicionandoAsPedras}
 
