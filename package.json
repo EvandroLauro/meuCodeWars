@@ -1,0 +1,14 @@
+{
+  "name": "code-war",
+  "version": "1.0.0",
+  "description": "",
+  "main": "jadenCasingString.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Evandro Lauro",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^27.0.5"
+  }
+}
