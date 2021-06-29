@@ -16,6 +16,7 @@ contains each number only up to N times, without changing the order?
 
 var albumComRepetidos = [20, 37, 20, 21, 20, 40, 21, 10]
 var maxDeRepetidos = 1
+
 function limitaRepetidos(album, max) {
     let newAlbum = []
     for (let i = 0; i < album.length; i++) {
