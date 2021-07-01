@@ -10,16 +10,15 @@ Jaden-Cased:     "How Can Mirrors Be Real If Our Eyes Aren't Real"
 
 */
 
-
 function toJadeCase(string) {
     let array = string.split(" ")
-    let resultUpString = [] 
+    let resultUpString = []
     for (let i = 0; i < array.length; i++) {
         let upString = array[i][0].toUpperCase() + array[i].substr(1)
         resultUpString.push(upString)
     }
-    let passToString = resultUpString.toString(resultUpString + '')
-    let result = passToString.replace(/,/g, " ");
+    let result = resultUpString.join(" ")
+    console.log(result)
     return result
-} 
+}
 module.exports = {toJadeCase}
