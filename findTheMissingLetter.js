@@ -1,46 +1,37 @@
 
 const abcdario = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","u","v","w","x","y","z"];
+
 function findMissingLetter(arr) {
+   return findLetter(arr)
+}
+
+function findLetter(arr) { 
     let array = arr.map(ar => ar.toLowerCase())
-    let letter = ''
-    if (ultimaLetra(arr) === ultimaLetra(array)) {
-        letter = findLetter(array)
-    } else {
-        letter = findLetter(array).toUpperCase() 
-    }
-    return letter
+    return toCaseString(letter(array), arr, array)
 }
 
-function ultimaLetra(array) {
-    let len = array.length
-    return array[len - 1] 
+function letter(array) {
+    let len = lenArray(array)
+    return len.length == array.length ? abcdario[len.length] : abcdario[len.find((elem, indice) => abcdario[elem] != array[indice])]
 }
 
-function findLetter(array) { 
-    let lista = lenArr(array)
-    let result = ""
-    if (lista.length === array.length) {
-        result = abcdario[lista.length]
-    } else {
-        for (let i = 0; i < lista.length; i++) {
-            if (array[i] != abcdario[lista[i]]) {
-                result = abcdario[lista[i]]
-                break
-            }
-        }
-    }
-    return result
-}
-
-function lenArr(array) {
+function lenArray(array) {
     let inicio = abcdario.indexOf(array[0])
-    let final = abcdario.indexOf(ultimaLetra(array))
+    let final = abcdario.indexOf(ultLetra(array))
     let result = []
     while (inicio <= final) {
         result.push(inicio)
         inicio++
     }
     return result
+}
+
+function toCaseString(letter, arr, array) {
+    return ultLetra(arr) === ultLetra(array) ? letter.toLowerCase() : letter.toUpperCase() 
+}
+
+function ultLetra(array) { 
+    return array[array.length - 1] 
 }
 
 module.exports = {findMissingLetter}
