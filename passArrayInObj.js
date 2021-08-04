@@ -14,7 +14,6 @@ const passInputIsbnInObj = (array) => { // tentar colocar isso num map
 const passInputIsbnInObj = (array) => {
     let i = 0
     return array.reduce((acc ,val) => {
-        console.log(acc, val)
         const obj = {...acc , [i] : val};
         i++
         return obj;
